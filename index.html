@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meadow House Repairs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">Staff repairs desk</p>
+          <h1>Meadow House Repairs</h1>
+        </div>
+      </div>
+      <p class="home-chip">Home: <strong>Meadow House</strong></p>
+    </div>
+    <ol class="journey" aria-label="How a repair moves through this desk">
+      <li><span class="step-num">1</span> Report a fault</li>
+      <li><span class="step-num">2</span> Track progress</li>
+      <li><span class="step-num">3</span> Finish and keep the record</li>
+    </ol>
+  </header>
+  <p id="storage-warning" class="banner error" role="alert" hidden>This browser is blocking storage, so jobs will not be kept after a refresh.</p>
+  <main id="main" class="layout">
+    <div class="stack">
+      <section class="card" aria-labelledby="report-heading">
+        <p class="card-kicker">New job</p>
+        <h2 id="report-heading">Report a fault</h2>
+        <p class="lede">Describe what is broken. The job ID, date and starting status are added for you.</p>
+        <form id="report-form" novalidate>
+          <div class="field">
+            <span class="label-text">Home</span>
+            <p class="fixed-home"><strong>Meadow House</strong> — all reports are for this home</p>
+          </div>
+          <div class="field">
+            <label for="description">Fault description</label>
+            <textarea id="description" name="description" maxlength="1000" aria-describedby="description-hint description-error"></textarea>
+            <p id="description-hint" class="hint">Be specific, for example which fence, room or fitting.</p>
+            <p id="description-error" class="error-msg" hidden></p>
+          </div>
+          <div class="field">
+            <label for="reporter">Reporter name</label>
+            <input type="text" id="reporter" name="reporter" maxlength="120" autocomplete="name" aria-describedby="reporter-error">
+            <p id="reporter-error" class="error-msg" hidden></p>
+          </div>
+          <fieldset>
+            <legend>Priority</legend>
+            <p class="hint">Urgent is written as the word Urgent, not colour alone.</p>
+            <div class="priority-grid">
+              <label class="choice">
+                <input type="radio" id="priority-normal" name="priority" value="Normal" checked>
+                <span class="choice-card"><strong>Normal</strong><span>Standard repair, take in turn</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" id="priority-urgent" name="priority" value="Urgent">
+                <span class="choice-card urgent"><strong>Urgent</strong><span>Needs attention first</span></span>
+              </label>
+            </div>
+          </fieldset>
+          <p class="hint">New reports are saved with status <strong>New</strong>.</p>
+          <button type="submit" id="report-submit">Submit report</button>
+          <p id="report-status" class="banner" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+      <section class="card" aria-labelledby="jobs-heading">
+        <h2 id="jobs-heading">Repair jobs <span id="job-count" class="count"></span></h2>
+        <p id="jobs-empty" class="empty">No jobs yet. Submit a report above and it will appear here.</p>
+        <ul id="job-list" class="job-list"></ul>
+      </section>
+    </div>
+    <section class="card detail-card" id="detail-panel" aria-labelledby="detail-heading">
+      <div id="detail-empty">
+        <div class="empty-art" aria-hidden="true"></div>
+        <h2 id="detail-heading">Job details</h2>
+        <p class="empty">Choose a job from the list to see its details, record progress or mark it complete.</p>
+      </div>
+      <div id="detail" hidden></div>
+    </section>
+  </main>
+  <footer class="site-foot">Meadow House staff use this desk to report, track and complete repairs. Earlier updates stay on the job record.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
